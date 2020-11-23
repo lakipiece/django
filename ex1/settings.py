@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-import pymysql
+from . import db_conf as db
+import pymysql 
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -57,6 +58,7 @@ ROOT_URLCONF = 'ex1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        #'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -82,17 +84,17 @@ WSGI_APPLICATION = 'ex1.wsgi.application'
 #         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
-
-DATABASES = {
-    'default' : {
-        'ENGINE': 'django.db.backends.mysql',    
-        'NAME': 'django',                  
-        'USER': 'admin',                          
-        'PASSWORD': '1122moon',                  
-        'HOST': 'database-2.cstteuc7ccx3.ap-northeast-2.rds.amazonaws.com',                     
-        'PORT': '3306',                          
-    }
-}
+DATABASES = db.DATABASES
+# DATABASES = {
+#     'default' : {
+#         'ENGINE': 'django.db.backends.mysql',    
+#         'NAME': 'django',                  
+#         'USER': 'admin',                          
+#         'PASSWORD': '1122moon',                  
+#         'HOST': 'database-2.cstteuc7ccx3.ap-northeast-2.rds.amazonaws.com',                     
+#         'PORT': '3306',                          
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
