@@ -1,0 +1,12 @@
+{% extends "base_template.html" %} 
+{%block title%}TEST 1{%endblock title%}
+{%block container%}
+    <h2>{{ datas }} </h2>
+    {% with datas|first as dt %} 
+    <h2>{{ dt.signid }}</h2>
+    {% endwith%}
+
+    {% for dt in datas %}
+    <h2>{{ dt.signid }} </h2>
+    {% endfor %}
+{% endblock container%}

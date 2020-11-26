@@ -1,0 +1,82 @@
+
+
+<div class="container-fluid">
+                <div class="logo">
+                    <a href="/md/crm_main.asp" class="logo"><strong>TEST</strong> <span class="bis"><span class="text-success">CRM</span> System </span></a>
+                </div>
+
+                 <div class="menu-extras topbar-custom">
+                    <ul class="list-inline float-right mb-0">
+                        <li class="menu-item list-inline-item">
+                            <!-- Mobile menu toggle-->
+                            <a class="navbar-toggle nav-link">
+                                <div class="lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                            <!-- End mobile menu toggle-->
+                        </li>
+                        <li class="list-inline-item dropdown notification-list">
+                            <span class="text-white font-14">Signname &nbsp; <span class="text-success" data-toggle="tooltip" data-original-title="PERMISSION : Permission%>"> 
+							</span></span>
+                            <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">                                
+                                <i class="text-white fa fa-power-off w400" style="font-size:1rem;"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right profile-dropdown " aria-labelledby="Preview">
+                                <!-- item-->
+                                <a href="/md/crm_logout.asp" class="dropdown-item notify-item">
+                                    <i class="zmdi zmdi-power "></i> <span>Logout</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+			
+
+
+<script>
+	var key = new Array();
+		key['q'] = "/md/request/crm_request_list_user.asp";	
+		key['w'] = "/md/request/crm_request_list.asp";
+		key['h'] = "/md/crm_main.asp";
+        key['z'] = "/md/request/crm_request_A1001.asp";
+        key['1'] = "";
+        
+
+		<% IF INSTR(PERM,"PERM_ADM") > 0 THEN %>
+        key['p'] = "/md/admin_user/crm_site_log.asp";
+		key['a'] = "/md/request/crm_request_list_adm.asp";	
+		key['m'] ="/md/admin_user/crm_memo_list.asp";	
+		key['e'] = "/md/admin_user/crm_tran_log.asp";
+		key['l'] = "/md/request/crm_request_A_log.asp";		
+		<% END IF %>
+
+		function getKey(keyStroke) {
+			if ((event.srcElement.tagName != 'INPUT') && (event.srcElement.tagName != 'TEXTAREA')){
+				isNetscape=(document.layers);
+				eventChooser = (isNetscape) ? keyStroke.which : event.keyCode;
+				which = String.fromCharCode(eventChooser).toLowerCase();
+				for (var i in key)
+                    if (which == '1'){
+                        $("input[aria-controls=datatable]").focus();
+                    }else { 
+					    if (which == i ) window.location = key[i];
+                    }
+			}
+		}
+		document.onkeypress = getKey;
+</script>
+
+<script type="text/javascript">
+    window.onload = function(){
+        var browser = navigator.userAgent.toLowerCase();
+
+        if ((navigator.appName == 'Netscape' && browser.indexOf('trident') != -1) || (browser.indexOf('msie') != -1)){
+            alert('CRM 사이트는 Chrome 에 최적화 되어 있습니다. \n 익스플로러에서는 정상적으로 작동하지 않을 수 있습니다.'); 
+        }
+    }
+</script>

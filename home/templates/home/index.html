@@ -1,0 +1,171 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html" charset="euc-kr">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.stunitas.com/img/common/favicon.ico">
+
+    <title>TEST CRM</title>
+
+
+   <!-- Data Tables CSS -->
+  	<link href="{% static 'plugins/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet" type="text/css"/>
+	<link href="{% static 'plugins/datatables/buttons.bootstrap4.min.css' %}" rel="stylesheet" type="text/css"/>
+	<link href="{% static 'plugins/datatables/responsive.bootstrap4.min.css' %}" rel="stylesheet" type="text/css"/>
+	<link href="{% static 'plugins/datatables/select.bootstrap4.min.css' %}" rel="stylesheet" type="text/css"/>
+    
+ <!-- Date picker Css -->	
+	<link href="{% static 'plugins/timepicker/bootstrap-timepicker.min.css' %}" rel="stylesheet" type="text/css"/>
+	<link href="{% static 'plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css' %}" rel="stylesheet" type="text/css"/>
+	<link href="{% static 'plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css' %}" rel="stylesheet" type="text/css"/>
+	<link href="{% static 'plugins/clockpicker/css/bootstrap-clockpicker.min.css' %}" rel="stylesheet" type="text/css"/>
+	<link href="{% static 'plugins/bootstrap-daterangepicker/daterangepicker.css' %}" rel="stylesheet" type="text/css"/>
+
+  <!-- Select2 CSS -->
+	<link href="{% static 'plugins/select2/css/select2.min.css' %}" rel="stylesheet" type="text/css"/>	
+
+  <!-- App Css -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'css/icons.css' %}" rel="stylesheet" type="text/css" />	
+	<link href="{% static 'css/style_custom.css' %}" rel="stylesheet" type="text/css" />		
+	
+	
+  <!-- Customized CSS -->
+	<link href="{% static 'css/customize.css' %}" rel="stylesheet" type="text/css" />
+    <script src="{% static 'js/modernizr.min.js' %}"></script>
+    
+ </head>
+
+<body>
+    
+
+
+    <div class="account-pages"></div>
+    
+    <div class="clearfix"></div>
+    <div class="wrapper-page">
+    	<div class="card-box" style ="width:500px; height:530px;">
+	        <div class="panel-heading"><h3 class="text-center"><strong class="text-success">ST Unitas</strong> CRM</h3></div> 
+
+        	<div class="p-20">
+                
+                <form method="post" class="form-horizontal m-t-20" name="frm_signin" action="/crm_login">		
+                {% csrf_token %}						
+                <div class="form-group-custom m-t-30">	                
+
+                    <div class="text-danger">
+                    본 시스템에 로그인 하는 것은 <br> ST Unitas 정보 자산 취급 방침에 동의하는 것으로 간주 됩니다.
+                    </div>
+                    <div class="text-muted2 font-12 t-left m-t-20" style="line-height: 1.5rem;">						
+                            별도 권한 요청 없이 사내 메일 계정으로 로그인 하실 수 있습니다. <br>
+                            ST Unitas 메일 계정과 같은 아이디와 패스워드를 입력해주세요. <br>
+                            로그인 관련 오류 시, BI실 CDH팀으로 문의해 주세요. 
+                    </div>
+                </div>
+				
+	            <div class="form-group-custom" style="height:35px;">	                
+	                    <input class="" type="text" required="" name="SignID"  required="required">
+                        <label class="control-label" for="SignID">ID <span class="muted font-9"> / ST 계정 (@stunitas.com 제외) </span> </label><i class="bar"></i>	                
+	            </div>
+
+                <div class="form-group-custom" style="height:35px;">	                
+	                    <input class="" type="password" required="" name="SignPW"  required="required"  onkeyup="javascript:if(event.keyCode == 13) { Confirm(); }">
+                        <label class="control-label" for="SignPW">Password </label><i class="bar"></i>	                
+	            </div>
+
+	            <div class="form-group-custom text-center" style="margin-top:50px;">	                
+	                    <button class="btn btn btn-block btn-success waves-effect waves-light" type="submit">Log In</button>	                
+	            </div>
+
+                <div class="form-group m-t-30 m-b-0 t-center">                    
+                        <i class="fa fa-copyright m-r-5"></i>2019. ST Unitas</a>                    
+                </div>
+
+				</form>         
+			</div>   	            
+			
+		</div>  <!-- end Card-box -->
+		<div class="card-box text-center" style="width:500px; padding : 10px;">
+			<span class="text-dark font-12">	※ CRM 사이트는 <span class="text-success w600"><i class="fa  fa fa-chrome"></i> Chrome </span>과 <span class="text-success w600">1600px이상의 해상도</span>에 최적화 되어 있습니다.	</span>		
+		</div>		
+    </div> <!-- end wrapper-page -->
+
+    
+	<script>
+        var resizefunc = [];
+    </script>
+
+<!--  modal -->
+  <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" style="width:800px !important; max-width:800px !important;">
+		<div class="modal-content">
+			<div class="modal-header">				
+			<div class="pull-right" role="button" data-dismiss="modal"><i class="text-muted md md-close" style="font-size:25px;"></i></div>								
+			</div>
+			<div class="modal-body">	
+				<ul class="text-dark font-14 ls-m10" style="font-weight:500; line-height:30px;">
+				
+				<span class="text-inverse font-bold font-25">CRM/BI 사이트 웹서버 이전관련 사이트 이용 공지 드립니다. </span>
+				<br>					
+				<br>
+					<li>
+						<span class="font-16 text-inverse font-bold"> ISMS 심사에 대한 조치로 CRM사이트의 서버 이전이 예정되어 있습니다. </span>
+						<br>
+						<span class="font-16 text-danger font-bold"> 5월 28일(화) 오후 12시부터 최대 4시간소요 예정이며, 작업시간 동안에는 사이트를 이용하실 수 없습니다.  <br></span>
+						<span class="font-16 text-inverse font-bold"> ★긴급한 자료는 담당자와 메일/슬랙으로 논의해주세요 :) </span>						
+					</li>				
+			</ul>						
+
+		<p>&nbsp;</p>
+
+			</div>
+			<div class="modal-footer">				
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+<!-- jQuery  -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script><!-- Popper for Bootstrap -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/waves.js' %}"></script>
+<script src="{% static 'js/jquery.slimscroll.js' %}"></script>
+<script src="{% static 'js/jquery.scrollTo.min.js' %}"></script>
+
+<script src="{% static 'plugins/moment/moment.js' %}" type="text/javascript"></script>
+
+<!-- Date Picker -->
+<script src="{% static 'plugins/timepicker/bootstrap-timepicker.js' %}" type="text/javascript"></script>
+<script src="{% static 'plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'plugins/clockpicker/js/bootstrap-clockpicker.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'plugins/bootstrap-daterangepicker/daterangepicker.js' %}" type="text/javascript"></script>
+
+<!-- App js -->
+<script src="{% static 'js/jquery.core.js' %}"></script>
+<script src="{% static 'js/jquery.app.js' %}"></script>
+
+<!-- form Pickers -->
+<script src="{% static 'pages/jquery.form-pickers.init.js' %}"></script>
+
+<!-- Custom Js -->
+<script src="{% static 'js/custom.js' %}"></script>
+
+<script>
+    $(document).ready(function (){    
+        //$('#myModal').modal('show');	  	
+        frm_signin.SignID.focus();				    
+    });
+</script>
+
+</body> 
+</html> 
